@@ -39,7 +39,14 @@ void ATankGameModeBase::ActorDied(AActor *DeadActor)
 
         if(TargetTurrets == 0)
         {
-             HandleGameOver(true);       
+            if(UGameplayStatics::GetCurrentLevelName(this, true) == FString(TEXT("Level2")))
+            {
+                HandleGameOver(true);
+            }
+            else
+            {
+                UGameplayStatics::OpenLevel(this, FName(TEXT("Level2")));
+            }
         }        
     }
 }
