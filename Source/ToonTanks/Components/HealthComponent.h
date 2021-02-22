@@ -24,6 +24,9 @@ public:
 	// Sets default values for this component's properties
 	UHealthComponent();
 
+	float GetCurrentHealth(){ return Health;}
+	float GetDefaultHealth(){ return DefaultHealth;}
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;

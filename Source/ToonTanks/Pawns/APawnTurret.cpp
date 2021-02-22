@@ -3,10 +3,13 @@
 #include "APawnTurret.h"
 #include "Kismet/GameplayStatics.h"
 #include "APawnTank.h"
+#include "Components/WidgetComponent.h"
+#include "ToonTanks/Widgets/HealthBar.h"
 
 AAPawnTurret::AAPawnTurret() 
 {
-    
+	HealthWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("Health Bar"));
+	HealthWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 }
 
 void AAPawnTurret::Tick(float DeltaTime) 
@@ -40,6 +43,12 @@ void AAPawnTurret::BeginPlay()
                                             true);
 
     PawnTank = Cast<AAPawnTank>(UGameplayStatics::GetPlayerPawn(this, 0));
+
+    if(HealthWidgetComp)
+    {
+        UHealthBar *HealthBar = Cast<UHealthBar>(HealthWidgetComp->GetUserWidgetObject());
+        HealthBar->SetHealthComponent(HealthComponent);
+  }
 }
 
 void AAPawnTurret::CheckFireCondition() 

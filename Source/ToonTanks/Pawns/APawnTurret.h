@@ -7,16 +7,16 @@
 #include "APawnTurret.generated.h"
 
 class AAPawnTank;
+class UWidgetComponent;
 
-/**
- * 
- */
 UCLASS()
 class TOONTANKS_API AAPawnTurret : public APawnBase
 {
 	GENERATED_BODY()
 	
 private:
+	UPROPERTY(EditAnywhere)
+	UWidgetComponent *HealthWidgetComp;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire", meta = (AllowPrivateAccess = "true"));
 	float FireRate = 2.0f;

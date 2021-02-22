@@ -25,8 +25,9 @@ private:
 	UStaticMeshComponent *TurretMesh;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent *ProjectileSpawnPoint;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
-	UHealthComponent *HealthComponent;
+//	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+//	UHealthComponent *HealthComponent;
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile Type", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<AProjectileBase> ProjectileClass;
@@ -45,7 +46,9 @@ public:
 	virtual void HandleDestruction();
 	
 protected:
-
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	UHealthComponent *HealthComponent;
+	
 	void Fire();
 	void RotateTurret(FVector LookAtTarget);
 
