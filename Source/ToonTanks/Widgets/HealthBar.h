@@ -7,8 +7,7 @@
 #include "ToonTanks/Components/HealthComponent.h"
 #include "HealthBar.generated.h"
 
-//UCLASS(Abstract)
-UCLASS()
+UCLASS(Abstract)
 class TOONTANKS_API UHealthBar : public UUserWidget
 {
 	GENERATED_BODY()
@@ -21,10 +20,10 @@ protected:
 
 	TWeakObjectPtr<UHealthComponent> OwnerHealthComponent;
 
-	UPROPERTY( meta = (BindWidget))
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	class UProgressBar *HealthBar;
-	UPROPERTY( meta = (BindWidget))
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	class UTextBlock *CurrentHealth;
-	UPROPERTY( meta = (BindWidget))
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	class UTextBlock *DefaultHealth;
 };
