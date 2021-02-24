@@ -20,5 +20,4 @@ void UHealthBar::NativeTick(const FGeometry & MyGeometry, float InDeltaTime)
     CurrentHealth->SetText(FText::AsNumber(OwnerHealthComponent->GetCurrentHealth(), &Opt));
 
     DefaultHealth->SetText(FText::AsNumber(OwnerHealthComponent->GetDefaultHealth(), &Opt));
-    
 }
