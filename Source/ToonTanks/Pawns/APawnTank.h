@@ -51,6 +51,8 @@ public:
 
 	bool GetIsPlayerAlive();
 
+	UHealthComponent* GetHealthComponent() {return HealthComponent;}
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
