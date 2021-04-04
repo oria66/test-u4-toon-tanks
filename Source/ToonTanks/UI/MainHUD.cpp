@@ -26,6 +26,7 @@ void AMainHUD::BeginPlay()
         if(PlayerTank)
         {
             HealthBar->SetHealthComponent(PlayerTank->GetHealthComponent());
+            //HealthBar->SetMainPlayer(PlayerTank);
         }
     }
 }

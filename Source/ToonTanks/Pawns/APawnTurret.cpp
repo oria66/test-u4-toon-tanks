@@ -10,6 +10,8 @@ AAPawnTurret::AAPawnTurret()
 {
 	HealthWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("Health Bar"));
 	HealthWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+
+    Ammo = -1;
 }
 
 void AAPawnTurret::Tick(float DeltaTime) 

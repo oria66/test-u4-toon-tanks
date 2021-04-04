@@ -3,6 +3,7 @@
 
 #include "CollectibleBase.h"
 #include "ToonTanks/Pawns/APawnTank.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ACollectibleBase::ACollectibleBase()
@@ -26,6 +27,15 @@ void ACollectibleBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	FVector NewLocation = GetActorLocation();
+
+	float DeltaHeight = FMath::Sin(RunningTime + DeltaTime) - FMath::Sin(RunningTime);
+
+	NewLocation.Z += DeltaHeight * 20.0f;
+
+	RunningTime += DeltaTime;
+
+	SetActorLocation(NewLocation);
 }
 
 // Called to bind functionality to input
@@ -41,6 +51,9 @@ void ACollectibleBase::Overlap(AActor* OverlappedActor, AActor* OtherActor)
 	
 	if (Tank)
 	{
+	    AAPawnTank *PlayerTank = Cast<AAPawnTank>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+
+		PlayerTank->AddAmmo(10);
 		UE_LOG(LogTemp, Warning, TEXT("Overlapped!!!!"));
 		Destroy();
 	}

@@ -21,6 +21,8 @@ void AAPawnTank::BeginPlay()
 	Super::BeginPlay();
 	
     PlayerControllerRef = Cast<APlayerController>(GetController());
+    
+	Ammo = 10;
 }
 
 // Called every frame

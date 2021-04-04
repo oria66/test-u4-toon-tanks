@@ -32,4 +32,15 @@ private:
 
 	UFUNCTION()
 	void Overlap(AActor* OverlappedActor, AActor* OtherActor);
+
+	float RunningTime;
+
+	UPROPERTY(EditAnywhere, Category = "Movement", meta = (AllowPrivateAccess = "true"))
+	float XValue;
+	
+	UPROPERTY(EditAnywhere, Category = "Movement", meta = (AllowPrivateAccess = "true"))
+	float YValue;
+	
+	UPROPERTY(EditAnywhere, Category = "Movement", meta = (AllowPrivateAccess = "true"))
+	float ZValue;
 };

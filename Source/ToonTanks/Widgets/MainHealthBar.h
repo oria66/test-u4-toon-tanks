@@ -7,6 +7,8 @@
 #include "ToonTanks/Components/HealthComponent.h"
 #include "MainHealthBar.generated.h"
 
+class AAPawnTank;
+
 UCLASS()
 class TOONTANKS_API UMainHealthBar : public UUserWidget
 {
@@ -26,4 +28,7 @@ protected:
 	class UTextBlock *CurrentHealth;
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	class UTextBlock *DefaultHealth;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	class UTextBlock *AmmoCounter;
 };

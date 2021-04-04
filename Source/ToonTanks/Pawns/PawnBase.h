@@ -42,9 +42,15 @@ public:
 	APawnBase();
 	virtual void HandleDestruction();
 
+	void AddAmmo(const int NewAmmoCount);
+	int GetAmmo() const;
+
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UHealthComponent *HealthComponent;
+
+	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category = "Actions", meta = (AllowPrivateAccess = "true"))
+	int Ammo;
 	
 	void Fire();
 	void RotateTurret(FVector LookAtTarget);
