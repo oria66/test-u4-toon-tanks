@@ -19,6 +19,11 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UPROPERTY(EditAnywhere, Category = "Effects");
+	USoundBase *CollectionSound;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))	
+	UParticleSystemComponent *BaseParticle;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

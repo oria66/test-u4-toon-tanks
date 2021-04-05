@@ -4,6 +4,8 @@
 #include "CollectibleBase.h"
 #include "ToonTanks/Pawns/APawnTank.h"
 #include "Kismet/GameplayStatics.h"
+#include "Particles/ParticleSystemComponent.h"
+#include "Components/StaticMeshComponent.h"
 
 // Sets default values
 ACollectibleBase::ACollectibleBase()
@@ -12,6 +14,10 @@ ACollectibleBase::ACollectibleBase()
 	PrimaryActorTick.bCanEverTick = true;
 
 	CollectibleMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Collectible Mesh"));
+	RootComponent = CollectibleMesh;
+
+	BaseParticle = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Base Particle"));
+	BaseParticle->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -54,6 +60,7 @@ void ACollectibleBase::Overlap(AActor* OverlappedActor, AActor* OtherActor)
 	    AAPawnTank *PlayerTank = Cast<AAPawnTank>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 
 		PlayerTank->AddAmmo(10);
+		UGameplayStatics::PlaySoundAtLocation(this, CollectionSound, GetActorLocation());
 		UE_LOG(LogTemp, Warning, TEXT("Overlapped!!!!"));
 		Destroy();
 	}
